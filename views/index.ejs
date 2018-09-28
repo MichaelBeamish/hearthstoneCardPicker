@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+
+    <div class="title">
+        <h1>Hearthstone Card Picker</h1>
+    </div>
+    
+    <div class="addCard">
+        <h3>Add New Card:</h3>
+        <form action="/cards" method="post">
+            <input type="number" name="mana" placeholder="Mana">
+            <input type="number" name="attack" placeholder="Attack">
+            <input type="number" name="health" placeholder="Health">
+            <input type="text" name="description" placeholder="Name/Description">
+            <input type="submit">
+        </form>
+        <hr>
+    </div>
+
+    <div class="yourList">
+        <h3>Your Current List:</h3>
+        <% for(let i = 0; i < deck.length; i++) { %>
+            <hr>
+            <div>
+                <div>Mana: <%= deck[i].mana %></div>
+                <div>Attack: <%= deck[i].attack %></div>
+                <div>Health: <%= deck[i].health %></div>
+                <div>Name/Description: <%= deck[i].description %></div>
+                <a href="/cards/remove/<%= deck[i].id %>">Remove From List</a>
+            </div>
+        <% } %>
+        <hr>
+    </div>
+    
+    <div class="allCards">
+        <h3>All Cards:</h3>
+        <% for(let i = 0; i < cards.length; i++) { %>
+            <hr>
+            <div>
+                <div>Mana: <%= cards[i].mana %></div>
+                <div>Attack: <%= cards[i].attack %></div>
+                <div>Health: <%= cards[i].health %></div>
+                <div>Name/Description: <%= cards[i].description %></div>
+                <a href="/cards/add/<%= cards[i].id %>">Add To List</a>
+            </div>
+        <% } %>
+        <hr>
+    </div>
+
+</body>
+</html>
